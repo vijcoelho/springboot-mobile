@@ -1,13 +1,40 @@
 package com.api.SpringServer;
 
+import com.api.SpringServer.model.employee.Employee;
+import com.api.SpringServer.model.employee.EmployeeDAO;
 import org.junit.jupiter.api.Test;
+import org.springframework.beans.factory.annotation.Autowired;
 import org.springframework.boot.test.context.SpringBootTest;
+
+import java.util.ArrayList;
+import java.util.List;
 
 @SpringBootTest
 class SpringServerApplicationTests {
 
-	@Test
-	void contextLoads() {
+	@Autowired
+	private EmployeeDAO employeeDAO;
+
+//	@Test
+	void addEmployeeTest() {
+		Employee employee = new Employee();
+		employee.setName("Bruce Wayne");
+		employee.setBranch("Security");
+		employee.setLocation("Building-X");
+		employeeDAO.save(employee);
 	}
 
+//	@Test
+	void getAllEmployees() {
+		List<Employee> employees = employeeDAO.getAllEmployees();
+		System.out.println(employees);
+	}
+
+	@Test
+	void getAllEmployeesAndDelete() {
+		List<Employee> employees = employeeDAO.getAllEmployees();
+		for (Employee employee: employees) {
+			employeeDAO.delete(employee);
+		}
+	}
 }
