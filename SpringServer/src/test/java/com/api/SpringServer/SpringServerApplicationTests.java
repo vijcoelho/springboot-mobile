@@ -15,22 +15,22 @@ class SpringServerApplicationTests {
 	@Autowired
 	private EmployeeDAO employeeDAO;
 
-//	@Test
+	@Test
 	void addEmployeeTest() {
 		Employee employee = new Employee();
-		employee.setName("Bruce Wayne");
-		employee.setBranch("Security");
-		employee.setLocation("Building-X");
+		employee.setName("James");
+		employee.setBranch("TI");
+		employee.setLocation("Building-5");
 		employeeDAO.save(employee);
 	}
 
-//	@Test
+	@Test
 	void getAllEmployees() {
 		List<Employee> employees = employeeDAO.getAllEmployees();
 		System.out.println(employees);
 	}
 
-	@Test
+//	@Test
 	void getAllEmployeesAndDelete() {
 		List<Employee> employees = employeeDAO.getAllEmployees();
 		for (Employee employee: employees) {
