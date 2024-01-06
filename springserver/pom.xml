@@ -9,10 +9,10 @@
 		<relativePath/> <!-- lookup parent from repository -->
 	</parent>
 	<groupId>com.api</groupId>
-	<artifactId>SpringServer</artifactId>
+	<artifactId>springserver</artifactId>
 	<version>0.0.1-SNAPSHOT</version>
-	<name>SpringServer</name>
-	<description>Spring client server application </description>
+	<name>springserver</name>
+	<description>First Time Using Spring Boot</description>
 	<properties>
 		<java.version>21</java.version>
 	</properties>
