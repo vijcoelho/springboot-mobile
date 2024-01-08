@@ -4,4 +4,6 @@
     <string name="form_branch">Branch</string>
     <string name="form_location">Location</string>
     <string name="button_save_employee">SAVE EMPLOYEE</string>
+    <string name="employee_list_label">Employee List</string>
+    <string name="create_employee_label">Create new employee</string>
 </resources>
