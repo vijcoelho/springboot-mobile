@@ -24,4 +24,15 @@ public class UserDao {
         return Streamable.of(userRepository.findAll())
                 .toList();
     }
+
+    public User authenticateUser(String email, String password) {
+        User user = userRepository.findByEmail(email);
+
+        if(user != null && user.getPassword().equals(password)) {
+            return user;
+        }
+        else {
+            return null;
+        }
+    }
 }
