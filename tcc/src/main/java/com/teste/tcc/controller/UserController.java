@@ -32,12 +32,11 @@ public class UserController {
     public ResponseEntity<String> authenticateUser(@RequestBody User user) {
         User authenticatedUser = userDao.authenticateUser(user.getEmail(), user.getPassword());
 
-        if(authenticatedUser != null) {
-            String response = "You can enter";
+        if (authenticatedUser != null) {
+            String response = "You are authenticated";
             return ResponseEntity.ok(response);
-        }
-        else {
-            return ResponseEntity.status(HttpStatus.UNAUTHORIZED).body("You can't enter!!");
+        } else {
+            return ResponseEntity.status(HttpStatus.UNAUTHORIZED).body("Authentication failed");
         }
     }
 }

@@ -20,6 +20,9 @@ import retrofit2.Response;
 
 public class MainActivity extends AppCompatActivity {
 
+
+    private RetrofitServer retrofit;
+
     @Override
     protected void onCreate(Bundle savedInstanceState) {
         super.onCreate(savedInstanceState);
@@ -28,6 +31,8 @@ public class MainActivity extends AppCompatActivity {
         TextInputEditText inputEditTextEmail = findViewById(R.id.textInputEmail);
         TextInputEditText textInputEditPassword = findViewById(R.id.textInputPassword);
         MaterialButton login_Button = findViewById(R.id.login_button);
+
+        retrofit = new RetrofitServer();
 
         login_Button.setOnClickListener(view -> {
             String email = String.valueOf(inputEditTextEmail.getText());
@@ -38,25 +43,31 @@ public class MainActivity extends AppCompatActivity {
             user.setPassword(password);
 
             authenticateUser(user);
-        });
-    }
-
+            });
+        }
     private void authenticateUser(User user) {
-        RetrofitServer retrofit = new RetrofitServer();
         UserRetrofit userRetrofit = retrofit.getAuthUser();
 
         Call<String> call = userRetrofit.authenticateUser(user);
         call.enqueue(new Callback<String>() {
             @Override
             public void onResponse(Call<String> call, Response<String> response) {
-                Toast.makeText(MainActivity.this, "Login", Toast.LENGTH_SHORT).show();
+                if (response.isSuccessful()) {
+                    showToast("Login successful");
+                } else {
+                    showToast("Authentication failed: " + response.message());
+                }
             }
-
             @Override
             public void onFailure(Call<String> call, Throwable t) {
-                Toast.makeText(MainActivity.this, "Error", Toast.LENGTH_SHORT).show();
+                showToast("Error during authentication");
                 Logger.getLogger(MainActivity.class.getName()).log(Level.SEVERE, "ERROR:", t);
             }
         });
     }
+
+    private void showToast(String message) {
+        runOnUiThread(() -> Toast.makeText(MainActivity.this, message, Toast.LENGTH_SHORT).show());
+    }
 }
+

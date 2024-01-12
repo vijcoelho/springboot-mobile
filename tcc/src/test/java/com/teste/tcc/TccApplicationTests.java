@@ -12,14 +12,14 @@ class TccApplicationTests {
 	@Autowired
 	private UserDao userDao;
 
-//	@Test
-//	void contextLoad() {
-//		User user = new User();
-//		user.setAddress("Rua Mariano Pereira da Silva, casa 06");
-//		user.setEmail("fred010@gmail.com");
-//		user.setName("Frederico Ricardo");
-//		user.setPassword("123");
-//		userDao.save(user);
-//	}
+	@Test
+	void contextLoad() {
+		User user = new User();
+		user.setAddress("Rua ADM");
+		user.setEmail("adm");
+		user.setName("adm supremo");
+		user.setPassword("123");
+		userDao.save(user);
+	}
 
 }
