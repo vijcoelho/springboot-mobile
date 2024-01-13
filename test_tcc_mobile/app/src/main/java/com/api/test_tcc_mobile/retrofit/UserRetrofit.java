@@ -2,6 +2,7 @@ package com.api.test_tcc_mobile.retrofit;
 
 import com.api.test_tcc_mobile.model.User;
 
+import okhttp3.ResponseBody;
 import retrofit2.Call;
 import retrofit2.http.Body;
 import retrofit2.http.POST;
@@ -9,5 +10,5 @@ import retrofit2.http.POST;
 public interface UserRetrofit {
 
     @POST("/login")
-    Call<String> authenticateUser(@Body User user);
+    Call<ResponseBody> authenticateUser(@Body User user);
 }
