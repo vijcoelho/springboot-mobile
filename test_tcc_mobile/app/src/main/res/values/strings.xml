@@ -3,5 +3,7 @@
     <string name="email"> Email </string>
     <string name="password"> Password </string>
     <string name="login" > Login </string>
-    <string name="testButton" > Click here </string>
+    <string name="logout"> Logout </string>
+    <string name="report"> Report </string>
+    <string name="profile"> Profile </string>
 </resources>

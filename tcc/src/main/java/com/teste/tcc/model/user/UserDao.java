@@ -8,6 +8,8 @@ import java.util.List;
 @Service
 public class UserDao {
 
+    private User authenticateUser;
+
     @Autowired
     private UserRepository userRepository;
 
@@ -23,10 +25,15 @@ public class UserDao {
         User user = userRepository.findByEmail(email);
 
         if (user != null && user.getPassword().equals(password)) {
+            authenticateUser = user;
             return user;
         } else {
             return null;
         }
+    }
+
+    public User getCurrentUser() {
+        return authenticateUser;
     }
 }
 

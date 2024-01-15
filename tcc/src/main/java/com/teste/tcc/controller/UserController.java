@@ -39,4 +39,9 @@ public class UserController {
             return ResponseEntity.status(HttpStatus.UNAUTHORIZED).body("Authentication failed");
         }
     }
+
+    @GetMapping("/get-current-user")
+    public User getCurrentUser() {
+        return userDao.getCurrentUser();
+    }
 }
