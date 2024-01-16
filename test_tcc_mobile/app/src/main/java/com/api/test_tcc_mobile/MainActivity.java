@@ -2,6 +2,8 @@ package com.api.test_tcc_mobile;
 
 import androidx.appcompat.app.AppCompatActivity;
 
+import android.animation.AnimatorInflater;
+import android.animation.AnimatorSet;
 import android.content.Intent;
 import android.os.Bundle;
 import android.widget.Toast;
@@ -37,6 +39,10 @@ public class MainActivity extends AppCompatActivity {
         retrofit = new RetrofitServer();
 
         login_Button.setOnClickListener(view -> {
+            AnimatorSet animatorSet = (AnimatorSet) AnimatorInflater.loadAnimator(this, R.animator.button_scale);
+            animatorSet.setTarget(login_Button);
+            animatorSet.start();
+
             String email = String.valueOf(inputEditTextEmail.getText());
             String password = String.valueOf(textInputEditPassword.getText());
 
@@ -58,13 +64,11 @@ public class MainActivity extends AppCompatActivity {
                 if (response.isSuccessful()) {
                     try {
                         String responseBodyString = response.body().string();
-                        Toast.makeText(MainActivity.this, "Login successful", Toast.LENGTH_SHORT).show();
                         startActivity(new Intent(MainActivity.this, Start.class));
                     } catch (IOException e) {
                         e.printStackTrace();
                     }
                 } else {
-                    Toast.makeText(MainActivity.this, "Authentication failed", Toast.LENGTH_SHORT).show();
                     if (response.errorBody() != null) {
                         try {
                             String errorBody = response.errorBody().string();

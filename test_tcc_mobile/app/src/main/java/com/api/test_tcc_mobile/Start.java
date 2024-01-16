@@ -1,5 +1,7 @@
 package com.api.test_tcc_mobile;
 
+import android.animation.AnimatorInflater;
+import android.animation.AnimatorSet;
 import android.content.Intent;
 import android.os.Bundle;
 
@@ -14,14 +16,13 @@ public class Start extends AppCompatActivity {
         super.onCreate(saveInstanceState);
         setContentView(R.layout.start);
 
-        MaterialButton logoutButton = findViewById(R.id.logout_button);
         MaterialButton profileButton = findViewById(R.id.profile_button);
 
-        logoutButton.setOnClickListener(view -> {
-            startActivity(new Intent(Start.this, MainActivity.class));
-        });
-
         profileButton.setOnClickListener(view -> {
+            AnimatorSet animatorSet = (AnimatorSet) AnimatorInflater.loadAnimator(this, R.animator.button_scale);
+            animatorSet.setTarget(profileButton);
+            animatorSet.start();
+
             startActivity(new Intent(Start.this, ProfileScene.class));
         });
     }
