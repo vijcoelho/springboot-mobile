@@ -65,6 +65,7 @@ public class MainActivity extends AppCompatActivity {
                     try {
                         String responseBodyString = response.body().string();
                         startActivity(new Intent(MainActivity.this, Start.class));
+                        finish();
                     } catch (IOException e) {
                         e.printStackTrace();
                     }

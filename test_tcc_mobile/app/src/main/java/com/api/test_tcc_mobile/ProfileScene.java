@@ -37,6 +37,7 @@ public class ProfileScene extends AppCompatActivity {
             animatorSet.start();
 
             startActivity(new Intent(ProfileScene.this, Start.class));
+            finish();
         });
 
         TextView textViewName = findViewById(R.id.textViewName);

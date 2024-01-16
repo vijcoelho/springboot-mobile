@@ -24,6 +24,7 @@ public class Start extends AppCompatActivity {
             animatorSet.start();
 
             startActivity(new Intent(Start.this, ProfileScene.class));
+            finish();
         });
     }
 }
