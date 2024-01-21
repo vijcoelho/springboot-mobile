@@ -30,6 +30,16 @@ public class ProfileScene extends AppCompatActivity {
         setContentView(R.layout.profilescene);
 
         MaterialButton homeProfile = findViewById(R.id.home_profile);
+        MaterialButton logoutButton = findViewById(R.id.logout_button);
+
+        logoutButton.setOnClickListener(view -> {
+            AnimatorSet animatorSet = (AnimatorSet) AnimatorInflater.loadAnimator(this, R.animator.button_scale);
+            animatorSet.setTarget(logoutButton);
+            animatorSet.start();
+
+            startActivity(new Intent(ProfileScene.this, MainActivity.class));
+            finish();
+        });
 
         homeProfile.setOnClickListener(view -> {
             AnimatorSet animatorSet = (AnimatorSet) AnimatorInflater.loadAnimator(this, R.animator.button_scale);
@@ -37,6 +47,7 @@ public class ProfileScene extends AppCompatActivity {
             animatorSet.start();
 
             startActivity(new Intent(ProfileScene.this, Start.class));
+            overridePendingTransition(R.animator.slide_in_left, R.animator.slide_out_right);
             finish();
         });
 

@@ -24,6 +24,7 @@ public class Start extends AppCompatActivity {
             animatorSet.start();
 
             startActivity(new Intent(Start.this, ProfileScene.class));
+            overridePendingTransition(R.animator.slide_out_right, R.animator.slide_in_left);
             finish();
         });
     }
