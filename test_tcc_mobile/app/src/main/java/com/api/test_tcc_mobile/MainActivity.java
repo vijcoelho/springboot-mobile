@@ -1,11 +1,16 @@
 package com.api.test_tcc_mobile;
 
 import androidx.appcompat.app.AppCompatActivity;
+import androidx.core.content.ContextCompat;
+import androidx.core.view.ViewCompat;
 
 import android.animation.AnimatorInflater;
 import android.animation.AnimatorSet;
 import android.content.Intent;
+import android.content.res.ColorStateList;
+import android.os.Build;
 import android.os.Bundle;
+import android.view.WindowManager;
 import android.widget.Toast;
 
 import com.api.test_tcc_mobile.model.User;
@@ -32,8 +37,17 @@ public class MainActivity extends AppCompatActivity {
         super.onCreate(savedInstanceState);
         setContentView(R.layout.activity_main);
 
+        if(Build.VERSION.SDK_INT >= Build.VERSION_CODES.KITKAT) {
+            getWindow().setFlags(WindowManager.LayoutParams.FLAG_LAYOUT_NO_LIMITS, WindowManager.LayoutParams.FLAG_LAYOUT_NO_LIMITS);
+        }
+
         TextInputEditText inputEditTextEmail = findViewById(R.id.textInputEmail);
         TextInputEditText textInputEditPassword = findViewById(R.id.textInputPassword);
+
+        ColorStateList colorStateList = ColorStateList.valueOf(ContextCompat.getColor(this, R.color.black));
+        ViewCompat.setBackgroundTintList(inputEditTextEmail, colorStateList);
+        ViewCompat.setBackgroundTintList(textInputEditPassword, colorStateList);
+
         MaterialButton login_Button = findViewById(R.id.login_button);
 
         retrofit = new RetrofitServer();
