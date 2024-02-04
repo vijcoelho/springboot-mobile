@@ -5,4 +5,5 @@
     <color name="blue_gradient">#FFCEDDF6</color>
     <color name="blue_gradient_dark">#FF7FA0D8</color>
     <color name="gray_dark">#757575</color>
+    <color name="light_blue">#d3dce3</color>
 </resources>

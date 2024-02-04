@@ -31,9 +31,7 @@ public class ProfileScene extends AppCompatActivity {
         super.onCreate(savedInstanceState);
         setContentView(R.layout.profilescene);
 
-        if(Build.VERSION.SDK_INT >= Build.VERSION_CODES.KITKAT) {
-            getWindow().setFlags(WindowManager.LayoutParams.FLAG_LAYOUT_NO_LIMITS, WindowManager.LayoutParams.FLAG_LAYOUT_NO_LIMITS);
-        }
+        getWindow().setFlags(WindowManager.LayoutParams.FLAG_LAYOUT_NO_LIMITS, WindowManager.LayoutParams.FLAG_LAYOUT_NO_LIMITS);
 
         MaterialButton homeProfile = findViewById(R.id.home_profile);
         MaterialButton logoutButton = findViewById(R.id.logout_button);
