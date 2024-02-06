@@ -68,5 +68,18 @@
             app:layout_constraintTop_toBottomOf="@+id/textInputPassword"
             app:layout_constraintWidth_percent="0.6" />
 
+        <CheckBox
+            android:id="@+id/rememberMe_checkBox"
+            android:layout_width="wrap_content"
+            android:layout_height="wrap_content"
+            android:text="Remember me"
+            android:buttonTint="@color/material_dynamic_primary60"
+            android:textColor="@color/black"
+            android:layout_marginTop="16dp"
+            app:layout_constraintTop_toBottomOf="@id/login_button"
+            app:layout_constraintStart_toStartOf="@id/login_button"
+            app:layout_constraintEnd_toEndOf="@id/login_button"/>
+
+
     </androidx.constraintlayout.widget.ConstraintLayout>
 </RelativeLayout>

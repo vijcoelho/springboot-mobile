@@ -7,10 +7,12 @@ import androidx.core.view.ViewCompat;
 import android.animation.AnimatorInflater;
 import android.animation.AnimatorSet;
 import android.content.Intent;
+import android.content.SharedPreferences;
 import android.content.res.ColorStateList;
 import android.os.Build;
 import android.os.Bundle;
 import android.view.WindowManager;
+import android.widget.CheckBox;
 import android.widget.Toast;
 
 import com.api.test_tcc_mobile.model.User;
@@ -31,24 +33,34 @@ import retrofit2.Response;
 public class MainActivity extends AppCompatActivity {
 
     private RetrofitServer retrofit;
+    private SharedPreferences sharedPreferences;
+    private SharedPreferences.Editor editor;
+    private CheckBox rememberMeCheckBox;
 
     @Override
     protected void onCreate(Bundle savedInstanceState) {
         super.onCreate(savedInstanceState);
         setContentView(R.layout.activity_main);
+        retrofit = new RetrofitServer();
 
         getWindow().setFlags(WindowManager.LayoutParams.FLAG_LAYOUT_NO_LIMITS, WindowManager.LayoutParams.FLAG_LAYOUT_NO_LIMITS);
+        sharedPreferences = getSharedPreferences("loginPrefs", MODE_PRIVATE);
+        editor = sharedPreferences.edit();
 
         TextInputEditText inputEditTextEmail = findViewById(R.id.textInputEmail);
         TextInputEditText textInputEditPassword = findViewById(R.id.textInputPassword);
+        rememberMeCheckBox = findViewById(R.id.rememberMe_checkBox);
 
-        ColorStateList colorStateList = ColorStateList.valueOf(ContextCompat.getColor(this, R.color.black));
-        ViewCompat.setBackgroundTintList(inputEditTextEmail, colorStateList);
-        ViewCompat.setBackgroundTintList(textInputEditPassword, colorStateList);
+        boolean rememberMe = sharedPreferences.getBoolean("rememberMe", false);
+        if(rememberMe) {
+            String savedEmail = sharedPreferences.getString("email", "");
+            String savedPassword = sharedPreferences.getString("password", "");
+            inputEditTextEmail.setText(savedEmail);
+            textInputEditPassword.setText(savedPassword);
+            rememberMeCheckBox.setChecked(true);
+        }
 
         MaterialButton login_Button = findViewById(R.id.login_button);
-
-        retrofit = new RetrofitServer();
 
         login_Button.setOnClickListener(view -> {
             AnimatorSet animatorSet = (AnimatorSet) AnimatorInflater.loadAnimator(this, R.animator.button_scale);
@@ -76,9 +88,20 @@ public class MainActivity extends AppCompatActivity {
                 if (response.isSuccessful()) {
                     try {
                         String responseBodyString = response.body().string();
+                        if(rememberMeCheckBox.isChecked()) {
+                            editor.putBoolean("rememberMe", true);
+                            editor.putString("email", user.getEmail());
+                            editor.putString("password", user.getPassword());
+                            editor.apply();
+                        } else {
+                            editor.putBoolean("rememberMe", false);
+                            editor.remove("email");
+                            editor.remove("password");
+                            editor.apply();
+                        }
                         startActivity(new Intent(MainActivity.this, Start.class));
                         finish();
-                    } catch (IOException e) {
+                    } catch(Exception e) {
                         e.printStackTrace();
                     }
                 } else {
