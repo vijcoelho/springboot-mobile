@@ -1,16 +1,13 @@
 package com.api.test_tcc_mobile;
 
 import androidx.appcompat.app.AppCompatActivity;
-import androidx.core.content.ContextCompat;
-import androidx.core.view.ViewCompat;
 
 import android.animation.AnimatorInflater;
 import android.animation.AnimatorSet;
 import android.content.Intent;
 import android.content.SharedPreferences;
-import android.content.res.ColorStateList;
-import android.os.Build;
 import android.os.Bundle;
+import android.view.View;
 import android.view.WindowManager;
 import android.widget.CheckBox;
 import android.widget.Toast;
@@ -36,6 +33,8 @@ public class MainActivity extends AppCompatActivity {
     private SharedPreferences sharedPreferences;
     private SharedPreferences.Editor editor;
     private CheckBox rememberMeCheckBox;
+    private MaterialButton login_Button;
+    private TextInputEditText inputEditTextEmail, textInputEditPassword;
 
     @Override
     protected void onCreate(Bundle savedInstanceState) {
@@ -47,8 +46,9 @@ public class MainActivity extends AppCompatActivity {
         sharedPreferences = getSharedPreferences("loginPrefs", MODE_PRIVATE);
         editor = sharedPreferences.edit();
 
-        TextInputEditText inputEditTextEmail = findViewById(R.id.textInputEmail);
-        TextInputEditText textInputEditPassword = findViewById(R.id.textInputPassword);
+        inputEditTextEmail = findViewById(R.id.textInputEmail);
+        textInputEditPassword = findViewById(R.id.textInputPassword);
+        login_Button = findViewById(R.id.login_button);
         rememberMeCheckBox = findViewById(R.id.rememberMe_checkBox);
 
         boolean rememberMe = sharedPreferences.getBoolean("rememberMe", false);
@@ -60,9 +60,11 @@ public class MainActivity extends AppCompatActivity {
             rememberMeCheckBox.setChecked(true);
         }
 
-        MaterialButton login_Button = findViewById(R.id.login_button);
+        login_Button.setOnClickListener(v -> loginOnClick(v));
+    }
 
-        login_Button.setOnClickListener(view -> {
+    public void loginOnClick(View view) {
+        if(view == login_Button) {
             AnimatorSet animatorSet = (AnimatorSet) AnimatorInflater.loadAnimator(this, R.animator.button_scale);
             animatorSet.setTarget(login_Button);
             animatorSet.start();
@@ -75,7 +77,7 @@ public class MainActivity extends AppCompatActivity {
             user.setPassword(password);
 
             authenticateUser(user);
-        });
+        }
     }
 
     private void authenticateUser(User user) {
@@ -87,7 +89,6 @@ public class MainActivity extends AppCompatActivity {
             public void onResponse(Call<ResponseBody> call, Response<ResponseBody> response) {
                 if (response.isSuccessful()) {
                     try {
-                        String responseBodyString = response.body().string();
                         if(rememberMeCheckBox.isChecked()) {
                             editor.putBoolean("rememberMe", true);
                             editor.putString("email", user.getEmail());
