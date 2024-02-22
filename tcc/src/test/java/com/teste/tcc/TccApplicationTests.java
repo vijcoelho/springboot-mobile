@@ -15,9 +15,9 @@ class TccApplicationTests {
 	@Test
 	void contextLoad() {
 		User user = new User();
-		user.setAddress("Rua ADM");
-		user.setEmail("adm");
-		user.setName("adm supremo");
+		user.setAddress("Pc da escola");
+		user.setEmail("escola@email.com");
+		user.setName("escola");
 		user.setPassword("123");
 		userDao.save(user);
 	}
