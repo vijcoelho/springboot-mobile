@@ -13,6 +13,6 @@ dependencyResolutionManagement {
     }
 }
 
-rootProject.name = "Botao1"
+rootProject.name = "kotlinTcc"
 include(":app")
  
