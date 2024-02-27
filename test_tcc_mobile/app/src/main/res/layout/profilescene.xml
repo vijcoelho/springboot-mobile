@@ -10,7 +10,9 @@
         android:id="@+id/backgroundView"
         android:layout_width="match_parent"
         android:layout_height="match_parent"
-        android:background="@drawable/gradient_background"/>
+        android:background="@drawable/gradient_background"
+        tools:layout_editor_absoluteX="131dp"
+        tools:layout_editor_absoluteY="16dp" />
 
     <androidx.cardview.widget.CardView
         android:id="@+id/cardView"
