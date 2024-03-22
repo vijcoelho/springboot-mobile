@@ -3,31 +3,92 @@
     xmlns:app="http://schemas.android.com/apk/res-auto"
     xmlns:tools="http://schemas.android.com/tools"
     android:layout_width="match_parent"
-    android:layout_height="match_parent"
-    tools:context=".MainActivity">
+    android:layout_height="match_parent">
 
     <TextView
-        android:id="@+id/textView"
+        android:id="@+id/txtBemvindo"
         android:layout_width="wrap_content"
         android:layout_height="wrap_content"
-        android:text="Hello World!"
+        android:text="@string/bemvindo"
+        android:textColor="@color/blue"
+        android:textSize="40dp"
         app:layout_constraintBottom_toBottomOf="parent"
+        app:layout_constraintEnd_toEndOf="parent"
+        app:layout_constraintStart_toStartOf="parent"
+        app:layout_constraintTop_toTopOf="parent"
+        app:layout_constraintVertical_bias="0.07" />
+
+    <TextView
+        android:id="@+id/txtInfos"
+        android:layout_width="0dp"
+        android:layout_height="wrap_content"
+        android:layout_marginTop="121dp"
+        android:layout_marginBottom="88dp"
+        android:text="@string/infos"
+        android:textAlignment="center"
+        android:textColor="@color/black"
+        android:textSize="16dp"
+        app:layout_constraintBottom_toTopOf="@+id/nome"
         app:layout_constraintEnd_toEndOf="parent"
         app:layout_constraintStart_toStartOf="parent"
         app:layout_constraintTop_toTopOf="parent" />
 
     <EditText
-        android:id="@+id/editTextText"
-        android:layout_width="match_parent"
-        android:layout_height="wrap_content"
-        android:layout_marginTop="48dp"
-        android:layout_margin="40dp"
-        android:ems="10"
-        android:inputType="text"
-        android:text="Usuário"
+        android:id="@+id/nome"
+        android:layout_width="0dp"
+        android:layout_height="0dp"
+        android:layout_marginStart="51dp"
+        android:layout_marginEnd="51dp"
+        android:layout_marginBottom="442dp"
+        android:hint="@string/nomeImc"
+        android:textColorHint="@color/darkGray"
+        app:layout_constraintBottom_toBottomOf="parent"
         app:layout_constraintEnd_toEndOf="parent"
         app:layout_constraintStart_toStartOf="parent"
-        app:layout_constraintTop_toBottomOf="@+id/textView" />
+        app:layout_constraintTop_toBottomOf="@+id/txtInfos" />
+
+    <EditText
+        android:id="@+id/idade"
+        android:layout_width="162dp"
+        android:layout_height="49dp"
+        android:hint="@string/idadeImc"
+        android:numeric="decimal"
+        android:textColorHint="@color/darkGray"
+        app:layout_constraintStart_toStartOf="@+id/nome"
+        app:layout_constraintTop_toBottomOf="@+id/nome" />
+
+    <EditText
+        android:id="@+id/altura"
+        android:layout_width="162dp"
+        android:layout_height="49dp"
+        android:numeric="decimal"
+        android:text="@string/alturaImc"
+        android:textColorHint="@color/darkGray"
+        app:layout_constraintStart_toStartOf="@+id/idade"
+        app:layout_constraintTop_toBottomOf="@+id/idade" />
+
+    <EditText
+        android:id="@+id/peso"
+        android:layout_width="162dp"
+        android:layout_height="49dp"
+        android:numeric="decimal"
+        android:text="@string/pesoImc"
+        android:textColorHint="@color/darkGray"
+        app:layout_constraintStart_toStartOf="@+id/altura"
+        app:layout_constraintTop_toBottomOf="@+id/altura" />
+
+    <com.google.android.material.button.MaterialButton
+        android:id="@+id/btnCalcular"
+        android:layout_width="123dp"
+        android:layout_height="59dp"
+        android:layout_marginTop="84dp"
+        android:text="@string/btnCalcular"
+        android:textColor="@color/black"
+        android:backgroundTint="@color/blue"
+        android:onClick="calcular"
+        app:layout_constraintEnd_toEndOf="parent"
+        app:layout_constraintStart_toStartOf="parent"
+        app:layout_constraintTop_toBottomOf="@+id/peso" />
 
 
 </androidx.constraintlayout.widget.ConstraintLayout>
