@@ -1,3 +1,11 @@
 <resources>
     <string name="app_name">AtividadeImc</string>
+    <string name="bemvindo">Bem-Vindo</string>
+    <string name="infos">Coloque suas informações para calcular seu imc</string>
+    <string name="nomeImc">Nome</string>
+    <string name="idadeImc">Idade</string>
+    <string name="alturaImc">Altura</string>
+    <string name="pesoImc">Peso</string>
+    <string name="btnCalcular">Calcular</string>
+
 </resources>

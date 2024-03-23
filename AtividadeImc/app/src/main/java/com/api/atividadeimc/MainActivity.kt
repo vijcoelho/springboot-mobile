@@ -1,43 +1,35 @@
-package com.example
+package com.api.atividadeimc
 
 import androidx.appcompat.app.AppCompatActivity
 import android.os.Bundle
 import android.view.View
-import android.widget.EditText
-import android.widget.TextView
-import com.example.testeon.R
-import com.example.testeon.databinding.ActivityMainBinding
-import com.google.android.material.button.MaterialButton
+import com.api.atividadeimc.databinding.ActivityMainBinding
+import com.example.model.Imc
 
 class MainActivity : AppCompatActivity() {
-    private lateinit var txtNome: EditText
-    private lateinit var txtIdade: EditText
-    private lateinit var txtAltura: EditText
-    private lateinit var txtPeso: EditText
-    private lateinit var btnCalcular: MaterialButton
-    private lateinit var txtTeste: TextView
+    private lateinit var binding: ActivityMainBinding
 
     override fun onCreate(savedInstanceState: Bundle?) {
         super.onCreate(savedInstanceState)
         setContentView(R.layout.activity_main)
 
-        txtNome = findViewById(R.id.nome)
-        txtAltura = findViewById(R.id.altura)
-        txtIdade = findViewById(R.id.idade)
-        txtPeso = findViewById(R.id.peso)
-        btnCalcular = findViewById(R.id.btnCalcular)
-        txtTeste = findViewById(R.id.txtBemvindo)
-
+        binding = ActivityMainBinding.inflate(layoutInflater)
+        setContentView(binding.root)
 
     }
 
     fun calcular(view: View) {
-        if (view == btnCalcular) {
-            val peso = txtPeso.text.toString()
-            val altura = txtAltura.text.toString()
-            val idade = txtIdade.text.toString()
 
-            txtTeste.text = peso + altura + idade
+        if (view == binding.btnCalcular) {
+            val nome = binding.nome.text.toString()
+            val peso = binding.peso.text.toString()
+            val altura = binding.altura.text.toString()
+
+            val imc = Imc(peso.toDouble(), altura.toDouble())
+
+            binding.mostrarNomeImc.text = nome + " Imc:"
+            binding.mostrarImc.text = String.format("%.2f", imc.calcularImc())
+            binding.nivel.text = imc.verificarImc()
         }
     }
 }

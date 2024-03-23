@@ -7,6 +7,10 @@ android {
     namespace = "com.api.atividadeimc"
     compileSdk = 34
 
+    buildFeatures {
+        viewBinding = true
+    }
+
     defaultConfig {
         applicationId = "com.api.atividadeimc"
         minSdk = 28

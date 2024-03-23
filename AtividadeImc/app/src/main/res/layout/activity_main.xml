@@ -22,57 +22,34 @@
         android:id="@+id/txtInfos"
         android:layout_width="0dp"
         android:layout_height="wrap_content"
-        android:layout_marginTop="121dp"
-        android:layout_marginBottom="88dp"
+        android:layout_marginTop="136dp"
+        android:layout_marginBottom="511dp"
         android:text="@string/infos"
         android:textAlignment="center"
         android:textColor="@color/black"
         android:textSize="16dp"
-        app:layout_constraintBottom_toTopOf="@+id/nome"
+        app:layout_constraintBottom_toTopOf="@+id/nivel"
         app:layout_constraintEnd_toEndOf="parent"
         app:layout_constraintStart_toStartOf="parent"
         app:layout_constraintTop_toTopOf="parent" />
 
     <EditText
         android:id="@+id/nome"
-        android:layout_width="0dp"
-        android:layout_height="0dp"
-        android:layout_marginStart="51dp"
-        android:layout_marginEnd="51dp"
-        android:layout_marginBottom="442dp"
+        android:layout_width="236dp"
+        android:layout_height="51dp"
+        android:layout_marginBottom="485dp"
         android:hint="@string/nomeImc"
         android:textColorHint="@color/darkGray"
         app:layout_constraintBottom_toBottomOf="parent"
-        app:layout_constraintEnd_toEndOf="parent"
-        app:layout_constraintStart_toStartOf="parent"
+        app:layout_constraintStart_toStartOf="@+id/btnCalcular"
         app:layout_constraintTop_toBottomOf="@+id/txtInfos" />
-
-    <EditText
-        android:id="@+id/idade"
-        android:layout_width="162dp"
-        android:layout_height="49dp"
-        android:hint="@string/idadeImc"
-        android:numeric="decimal"
-        android:textColorHint="@color/darkGray"
-        app:layout_constraintStart_toStartOf="@+id/nome"
-        app:layout_constraintTop_toBottomOf="@+id/nome" />
-
-    <EditText
-        android:id="@+id/altura"
-        android:layout_width="162dp"
-        android:layout_height="49dp"
-        android:numeric="decimal"
-        android:text="@string/alturaImc"
-        android:textColorHint="@color/darkGray"
-        app:layout_constraintStart_toStartOf="@+id/idade"
-        app:layout_constraintTop_toBottomOf="@+id/idade" />
 
     <EditText
         android:id="@+id/peso"
         android:layout_width="162dp"
         android:layout_height="49dp"
+        android:hint="@string/pesoImc"
         android:numeric="decimal"
-        android:text="@string/pesoImc"
         android:textColorHint="@color/darkGray"
         app:layout_constraintStart_toStartOf="@+id/altura"
         app:layout_constraintTop_toBottomOf="@+id/altura" />
@@ -81,14 +58,81 @@
         android:id="@+id/btnCalcular"
         android:layout_width="123dp"
         android:layout_height="59dp"
-        android:layout_marginTop="84dp"
-        android:text="@string/btnCalcular"
-        android:textColor="@color/black"
+        android:layout_marginTop="40dp"
         android:backgroundTint="@color/blue"
         android:onClick="calcular"
+        android:text="@string/btnCalcular"
+        android:textColor="@color/darkGray"
         app:layout_constraintEnd_toEndOf="parent"
+        app:layout_constraintHorizontal_bias="0.142"
         app:layout_constraintStart_toStartOf="parent"
         app:layout_constraintTop_toBottomOf="@+id/peso" />
+
+    <EditText
+        android:id="@+id/altura"
+        android:layout_width="162dp"
+        android:layout_height="49dp"
+        android:hint="@string/alturaImc"
+        android:numeric="decimal"
+        android:textColorHint="@color/darkGray"
+        app:layout_constraintStart_toStartOf="@+id/idade"
+        app:layout_constraintTop_toBottomOf="@+id/idade" />
+
+    <EditText
+        android:id="@+id/idade"
+        android:layout_width="162dp"
+        android:layout_height="50dp"
+        android:layout_marginStart="41dp"
+        android:hint="@string/idadeImc"
+        android:numeric="decimal"
+        android:textColorHint="@color/darkGray"
+        app:layout_constraintStart_toStartOf="parent"
+        app:layout_constraintTop_toBottomOf="@+id/nome" />
+
+    <TextView
+        android:id="@+id/mostrarNomeImc"
+        android:layout_width="206dp"
+        android:layout_height="53dp"
+        android:layout_marginBottom="128dp"
+        android:text=""
+        android:textAlignment="center"
+        android:textColor="@color/black"
+        android:textSize="30dp"
+        app:layout_constraintBottom_toBottomOf="parent"
+        app:layout_constraintEnd_toEndOf="parent"
+        app:layout_constraintHorizontal_bias="0.497"
+        app:layout_constraintStart_toStartOf="parent" />
+
+    <TextView
+        android:id="@+id/mostrarImc"
+        android:layout_width="206dp"
+        android:layout_height="53dp"
+        android:layout_marginBottom="32dp"
+        android:text=""
+        android:textAlignment="center"
+        android:textColor="@color/blue"
+        android:textSize="30dp"
+        app:layout_constraintBottom_toBottomOf="parent"
+        app:layout_constraintEnd_toEndOf="parent"
+        app:layout_constraintHorizontal_bias="0.497"
+        app:layout_constraintStart_toStartOf="parent"
+        app:layout_constraintTop_toBottomOf="@+id/mostrarNomeImc"
+        app:layout_constraintVertical_bias="0.0" />
+
+    <TextView
+        android:id="@+id/nivel"
+        android:layout_width="204dp"
+        android:layout_height="0dp"
+        android:layout_marginBottom="6dp"
+        android:text=""
+        android:textAlignment="center"
+        android:textColor="@color/black"
+        android:textSize="20dp"
+        app:layout_constraintBottom_toBottomOf="parent"
+        app:layout_constraintEnd_toEndOf="parent"
+        app:layout_constraintHorizontal_bias="0.492"
+        app:layout_constraintStart_toStartOf="parent"
+        app:layout_constraintTop_toBottomOf="@+id/txtInfos" />
 
 
 </androidx.constraintlayout.widget.ConstraintLayout>
