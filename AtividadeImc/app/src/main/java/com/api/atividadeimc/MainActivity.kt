@@ -1,10 +1,14 @@
 package com.api.atividadeimc
 
+import android.content.Intent
 import androidx.appcompat.app.AppCompatActivity
 import android.os.Bundle
 import android.view.View
 import com.api.atividadeimc.databinding.ActivityMainBinding
 import com.example.model.Imc
+
+// Antonio Ilton - RA: 23505
+// Vitor Coelho - RA: 23623
 
 class MainActivity : AppCompatActivity() {
     private lateinit var binding: ActivityMainBinding
@@ -16,20 +20,25 @@ class MainActivity : AppCompatActivity() {
         binding = ActivityMainBinding.inflate(layoutInflater)
         setContentView(binding.root)
 
-    }
 
-    fun calcular(view: View) {
 
-        if (view == binding.btnCalcular) {
+        binding.btnCalcular.setOnClickListener {
             val nome = binding.nome.text.toString()
             val peso = binding.peso.text.toString()
             val altura = binding.altura.text.toString()
 
             val imc = Imc(peso.toDouble(), altura.toDouble())
 
-            binding.mostrarNomeImc.text = nome + " Imc:"
-            binding.mostrarImc.text = String.format("%.2f", imc.calcularImc())
-            binding.nivel.text = imc.verificarImc()
+            val i = Intent(this@MainActivity, MostrarDados::class.java)
+
+            i.putExtra("nome", nome)
+            i.putExtra("peso", peso)
+            i.putExtra("altura", altura)
+            i.putExtra("imc", imc.calcularImc())
+            i.putExtra("categoriaImc", imc.verificarImc())
+
+            startActivity( i )
+            finish()
         }
     }
 }

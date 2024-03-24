@@ -7,5 +7,8 @@
     <string name="alturaImc">Altura</string>
     <string name="pesoImc">Peso</string>
     <string name="btnCalcular">Calcular</string>
+    <string name="resultado">RESULTADO</string>
+    <string name="telaResultado">Aqui está o resultado com base nas informações fornecidas.</string>
+    <string name="resultadoPeso">PESO</string>
 
 </resources>
