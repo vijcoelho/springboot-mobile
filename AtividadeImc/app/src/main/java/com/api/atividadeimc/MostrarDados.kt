@@ -1,5 +1,6 @@
 package com.api.atividadeimc
 
+import android.content.Intent
 import androidx.appcompat.app.AppCompatActivity
 import android.os.Bundle
 import android.view.View
@@ -18,10 +19,9 @@ class MostrarDados : AppCompatActivity() {
 
         val bundle = intent.extras
 
-        val nome = bundle?.getString("nome")
         val altura = bundle?.getString("altura")
         val peso = bundle?.getString("peso")
-        val imc = bundle?.getDouble("imc", 0.0)
+        val imc = bundle?.getDouble("imc")
         val categoriaImc = bundle?.getString("categoriaImc")
 
         binding.txtAltura.text = "Altura: ${altura}"
@@ -34,6 +34,11 @@ class MostrarDados : AppCompatActivity() {
             "Peso ideal" -> binding.img2.visibility = View.VISIBLE
             "Magreza grave", "Magreza moderada", "Magreza leve" -> binding.img1.visibility = View.VISIBLE
             "Sobrepeso", "Obesidade grau I", "Obesidade grau II ou severa", "Obesidade grau III ou mórbida" -> binding.img3.visibility = View.VISIBLE
+        }
+
+        binding.btnVoltar.setOnClickListener {
+            startActivity(Intent(this@MostrarDados, MainActivity::class.java))
+            finish()
         }
     }
 }

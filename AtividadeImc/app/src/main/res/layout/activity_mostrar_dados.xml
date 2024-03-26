@@ -4,17 +4,20 @@
     xmlns:tools="http://schemas.android.com/tools"
     android:layout_width="match_parent"
     android:layout_height="match_parent"
+    android:background="@color/white"
     tools:context=".MostrarDados">
 
     <TextView
         android:id="@+id/txtResultado"
         android:layout_width="0dp"
         android:layout_height="wrap_content"
+        android:layout_marginTop="2dp"
+        android:layout_marginBottom="612dp"
         android:text="@string/resultado"
         android:textAlignment="center"
         android:textColor="@color/blue"
         android:textSize="40sp"
-        app:layout_constraintBottom_toTopOf="@+id/txtTelaResultados"
+        app:layout_constraintBottom_toTopOf="@+id/btnVoltar"
         app:layout_constraintEnd_toEndOf="parent"
         app:layout_constraintStart_toStartOf="parent"
         app:layout_constraintTop_toTopOf="parent"
@@ -24,14 +27,14 @@
         android:id="@+id/txtTelaResultados"
         android:layout_width="0dp"
         android:layout_height="wrap_content"
-        android:layout_marginTop="32dp"
+        android:layout_marginBottom="605dp"
         android:text="@string/telaResultado"
         android:textAlignment="center"
         android:textColor="@color/black"
         android:textSize="16sp"
+        app:layout_constraintBottom_toBottomOf="parent"
         app:layout_constraintEnd_toEndOf="parent"
-        app:layout_constraintStart_toStartOf="parent"
-        app:layout_constraintTop_toBottomOf="@+id/txtResultado" />
+        app:layout_constraintStart_toStartOf="parent" />
 
     <!-- Linear Layout abaixo do txtTelaResultados -->
 
@@ -76,6 +79,7 @@
             android:layout_marginTop="16dp"
             android:text="CATEGORIA IMC"
             android:textAlignment="center" />
+
     </LinearLayout>
 
     <!-- Image Views abaixo do LinearLayout -->
@@ -112,5 +116,16 @@
         app:layout_constraintEnd_toEndOf="parent"
         app:layout_constraintStart_toStartOf="parent"
         app:layout_constraintTop_toBottomOf="@+id/linearLayout" />
+
+    <com.google.android.material.button.MaterialButton
+        android:id="@+id/btnVoltar"
+        android:layout_width="87dp"
+        android:layout_height="0dp"
+        android:layout_marginStart="16dp"
+        android:layout_marginBottom="16dp"
+        android:backgroundTint="@color/blue"
+        android:text="Voltar"
+        android:textColor="@color/black"
+        tools:ignore="MissingConstraints" />
 
 </androidx.constraintlayout.widget.ConstraintLayout>

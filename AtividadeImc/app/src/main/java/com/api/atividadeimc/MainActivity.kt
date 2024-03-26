@@ -23,7 +23,6 @@ class MainActivity : AppCompatActivity() {
 
 
         binding.btnCalcular.setOnClickListener {
-            val nome = binding.nome.text.toString()
             val peso = binding.peso.text.toString()
             val altura = binding.altura.text.toString()
 
@@ -31,7 +30,6 @@ class MainActivity : AppCompatActivity() {
 
             val i = Intent(this@MainActivity, MostrarDados::class.java)
 
-            i.putExtra("nome", nome)
             i.putExtra("peso", peso)
             i.putExtra("altura", altura)
             i.putExtra("imc", imc.calcularImc())
