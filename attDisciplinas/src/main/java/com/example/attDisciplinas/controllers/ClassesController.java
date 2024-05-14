@@ -2,6 +2,7 @@ package com.example.attDisciplinas.controllers;
 
 import com.example.attDisciplinas.model.classesmodel.ClassesDao;
 import com.example.attDisciplinas.model.classesmodel.Classes;
+import com.example.attDisciplinas.model.classesmodel.UpdateClasseNameRequest;
 import org.springframework.beans.factory.annotation.Autowired;
 import org.springframework.web.bind.annotation.GetMapping;
 import org.springframework.web.bind.annotation.PostMapping;
@@ -26,29 +27,8 @@ public class ClassesController {
         return classesDao.getAllClasses();
     }
 
-    @PostMapping("/classes/change-name")
-    public Classes changeName(@RequestBody ChangeNameRequest request) {
-        return classesDao.changeClassName(request.getClassId(), request.getNewName());
-    }
-
-    static class ChangeNameRequest {
-        private Long classId;
-        private String newName;
-
-        public Long getClassId() {
-            return classId;
-        }
-
-        public void setClassId(Long classId) {
-            this.classId = classId;
-        }
-
-        public String getNewName() {
-            return newName;
-        }
-
-        public void setNewName(String newName) {
-            this.newName = newName;
-        }
+    @PostMapping("/classes/updateName")
+    public Classes updateClassName(@RequestBody UpdateClasseNameRequest request) {
+        return classesDao.changeClassName(request.getId(), request.getNewClassName());
     }
 }

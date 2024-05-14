@@ -16,3 +16,4 @@ dependencyResolutionManagement {
 rootProject.name = "TesteOn"
 include(":app")
 include(":app")
+include(":app")
