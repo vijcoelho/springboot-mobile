@@ -25,4 +25,30 @@ public class ClassesController {
     public List<Classes> getAll() {
         return classesDao.getAllClasses();
     }
+
+    @PostMapping("/classes/change-name")
+    public Classes changeName(@RequestBody ChangeNameRequest request) {
+        return classesDao.changeClassName(request.getClassId(), request.getNewName());
+    }
+
+    static class ChangeNameRequest {
+        private Long classId;
+        private String newName;
+
+        public Long getClassId() {
+            return classId;
+        }
+
+        public void setClassId(Long classId) {
+            this.classId = classId;
+        }
+
+        public String getNewName() {
+            return newName;
+        }
+
+        public void setNewName(String newName) {
+            this.newName = newName;
+        }
+    }
 }

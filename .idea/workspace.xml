@@ -17,13 +17,7 @@
   </component>
   <component name="ChangeListManager">
     <list default="true" id="8846f962-8619-4dcf-ae42-492d21808fa7" name="Changes" comment="">
-      <change afterPath="$PROJECT_DIR$/attDisciplinas/src/main/java/com/example/attDisciplinas/controllers/UserController.java" afterDir="false" />
-      <change afterPath="$PROJECT_DIR$/attDisciplinas/src/main/java/com/example/attDisciplinas/model/Classes.java" afterDir="false" />
-      <change afterPath="$PROJECT_DIR$/attDisciplinas/src/main/java/com/example/attDisciplinas/model/User.java" afterDir="false" />
-      <change afterPath="$PROJECT_DIR$/attDisciplinas/src/main/java/com/example/attDisciplinas/model/UserDao.java" afterDir="false" />
-      <change afterPath="$PROJECT_DIR$/attDisciplinas/src/main/java/com/example/attDisciplinas/repository/UserRepository.java" afterDir="false" />
       <change beforePath="$PROJECT_DIR$/.idea/workspace.xml" beforeDir="false" afterPath="$PROJECT_DIR$/.idea/workspace.xml" afterDir="false" />
-      <change beforePath="$PROJECT_DIR$/attDisciplinas/src/main/resources/application.properties" beforeDir="false" afterPath="$PROJECT_DIR$/attDisciplinas/src/main/resources/application.properties" afterDir="false" />
     </list>
     <option name="SHOW_DIALOG" value="false" />
     <option name="HIGHLIGHT_CONFLICTS" value="true" />
