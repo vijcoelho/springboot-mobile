@@ -22,49 +22,7 @@
   </component>
   <component name="ChangeListManager">
     <list default="true" id="fb76d7c4-05c3-412d-a276-6391fd36c799" name="Changes" comment="">
-      <change afterPath="$PROJECT_DIR$/app/.gitignore" afterDir="false" />
-      <change afterPath="$PROJECT_DIR$/app/build.gradle.kts" afterDir="false" />
-      <change afterPath="$PROJECT_DIR$/app/proguard-rules.pro" afterDir="false" />
-      <change afterPath="$PROJECT_DIR$/app/src/androidTest/java/com/api/splashscreen/ExampleInstrumentedTest.kt" afterDir="false" />
-      <change afterPath="$PROJECT_DIR$/app/src/main/AndroidManifest.xml" afterDir="false" />
-      <change afterPath="$PROJECT_DIR$/app/src/main/java/com/api/splashscreen/Disciplinas.kt" afterDir="false" />
-      <change afterPath="$PROJECT_DIR$/app/src/main/java/com/api/splashscreen/MainActivity.kt" afterDir="false" />
-      <change afterPath="$PROJECT_DIR$/app/src/main/java/com/api/splashscreen/model/Classes.kt" afterDir="false" />
-      <change afterPath="$PROJECT_DIR$/app/src/main/java/com/api/splashscreen/model/UpdateClasseNameRequest.kt" afterDir="false" />
-      <change afterPath="$PROJECT_DIR$/app/src/main/java/com/api/splashscreen/model/User.kt" afterDir="false" />
-      <change afterPath="$PROJECT_DIR$/app/src/main/java/com/api/splashscreen/retrofit/ClassesRetrofit.kt" afterDir="false" />
-      <change afterPath="$PROJECT_DIR$/app/src/main/java/com/api/splashscreen/retrofit/RetrofitServer.kt" afterDir="false" />
-      <change afterPath="$PROJECT_DIR$/app/src/main/java/com/api/splashscreen/retrofit/UserRetrofit.kt" afterDir="false" />
-      <change afterPath="$PROJECT_DIR$/app/src/main/res/drawable/baseline_check_box_24.xml" afterDir="false" />
-      <change afterPath="$PROJECT_DIR$/app/src/main/res/drawable/ic_launcher_background.xml" afterDir="false" />
-      <change afterPath="$PROJECT_DIR$/app/src/main/res/drawable/ic_launcher_foreground.xml" afterDir="false" />
-      <change afterPath="$PROJECT_DIR$/app/src/main/res/layout/activity_disciplinas.xml" afterDir="false" />
-      <change afterPath="$PROJECT_DIR$/app/src/main/res/layout/activity_main.xml" afterDir="false" />
-      <change afterPath="$PROJECT_DIR$/app/src/main/res/mipmap-anydpi/ic_launcher.xml" afterDir="false" />
-      <change afterPath="$PROJECT_DIR$/app/src/main/res/mipmap-anydpi/ic_launcher_round.xml" afterDir="false" />
-      <change afterPath="$PROJECT_DIR$/app/src/main/res/mipmap-hdpi/ic_launcher.webp" afterDir="false" />
-      <change afterPath="$PROJECT_DIR$/app/src/main/res/mipmap-hdpi/ic_launcher_round.webp" afterDir="false" />
-      <change afterPath="$PROJECT_DIR$/app/src/main/res/mipmap-mdpi/ic_launcher.webp" afterDir="false" />
-      <change afterPath="$PROJECT_DIR$/app/src/main/res/mipmap-mdpi/ic_launcher_round.webp" afterDir="false" />
-      <change afterPath="$PROJECT_DIR$/app/src/main/res/mipmap-xhdpi/ic_launcher.webp" afterDir="false" />
-      <change afterPath="$PROJECT_DIR$/app/src/main/res/mipmap-xhdpi/ic_launcher_round.webp" afterDir="false" />
-      <change afterPath="$PROJECT_DIR$/app/src/main/res/mipmap-xxhdpi/ic_launcher.webp" afterDir="false" />
-      <change afterPath="$PROJECT_DIR$/app/src/main/res/mipmap-xxhdpi/ic_launcher_round.webp" afterDir="false" />
-      <change afterPath="$PROJECT_DIR$/app/src/main/res/mipmap-xxxhdpi/ic_launcher.webp" afterDir="false" />
-      <change afterPath="$PROJECT_DIR$/app/src/main/res/mipmap-xxxhdpi/ic_launcher_round.webp" afterDir="false" />
-      <change afterPath="$PROJECT_DIR$/app/src/main/res/values-night/themes.xml" afterDir="false" />
-      <change afterPath="$PROJECT_DIR$/app/src/main/res/values/colors.xml" afterDir="false" />
-      <change afterPath="$PROJECT_DIR$/app/src/main/res/values/strings.xml" afterDir="false" />
-      <change afterPath="$PROJECT_DIR$/app/src/main/res/values/themes.xml" afterDir="false" />
-      <change afterPath="$PROJECT_DIR$/app/src/main/res/xml/backup_rules.xml" afterDir="false" />
-      <change afterPath="$PROJECT_DIR$/app/src/main/res/xml/data_extraction_rules.xml" afterDir="false" />
-      <change afterPath="$PROJECT_DIR$/app/src/test/java/com/api/splashscreen/ExampleUnitTest.kt" afterDir="false" />
-      <change afterPath="$PROJECT_DIR$/attDisciplinas/src/main/java/com/example/attDisciplinas/model/classesmodel/UpdateClasseNameRequest.java" afterDir="false" />
-      <change beforePath="$PROJECT_DIR$/.idea/compiler.xml" beforeDir="false" afterPath="$PROJECT_DIR$/.idea/compiler.xml" afterDir="false" />
       <change beforePath="$PROJECT_DIR$/.idea/misc.xml" beforeDir="false" afterPath="$PROJECT_DIR$/.idea/misc.xml" afterDir="false" />
-      <change beforePath="$PROJECT_DIR$/.idea/workspace.xml" beforeDir="false" afterPath="$PROJECT_DIR$/.idea/workspace.xml" afterDir="false" />
-      <change beforePath="$PROJECT_DIR$/attDisciplinas/src/main/java/com/example/attDisciplinas/controllers/ClassesController.java" beforeDir="false" afterPath="$PROJECT_DIR$/attDisciplinas/src/main/java/com/example/attDisciplinas/controllers/ClassesController.java" afterDir="false" />
-      <change beforePath="$PROJECT_DIR$/settings.gradle.kts" beforeDir="false" afterPath="$PROJECT_DIR$/settings.gradle.kts" afterDir="false" />
     </list>
     <option name="SHOW_DIALOG" value="false" />
     <option name="HIGHLIGHT_CONFLICTS" value="true" />
@@ -104,18 +62,19 @@
     <option name="hideEmptyMiddlePackages" value="true" />
     <option name="showLibraryContents" value="true" />
   </component>
-  <component name="PropertiesComponent">{
-  &quot;keyToString&quot;: {
-    &quot;RunOnceActivity.OpenProjectViewOnStart&quot;: &quot;true&quot;,
-    &quot;RunOnceActivity.ShowReadmeOnStart&quot;: &quot;true&quot;,
-    &quot;RunOnceActivity.cidr.known.project.marker&quot;: &quot;true&quot;,
-    &quot;cf.first.check.clang-format&quot;: &quot;false&quot;,
-    &quot;cidr.known.project.marker&quot;: &quot;true&quot;,
-    &quot;git-widget-placeholder&quot;: &quot;main&quot;,
-    &quot;ignore.virus.scanning.warn.message&quot;: &quot;true&quot;,
-    &quot;kotlin-language-version-configured&quot;: &quot;true&quot;
+  <component name="PropertiesComponent"><![CDATA[{
+  "keyToString": {
+    "RunOnceActivity.OpenProjectViewOnStart": "true",
+    "RunOnceActivity.ShowReadmeOnStart": "true",
+    "RunOnceActivity.cidr.known.project.marker": "true",
+    "cf.first.check.clang-format": "false",
+    "cidr.known.project.marker": "true",
+    "git-widget-placeholder": "main",
+    "ignore.virus.scanning.warn.message": "true",
+    "kotlin-language-version-configured": "true",
+    "last_opened_file_path": "D:/GitHub/springboot-mobile/LoginVesp"
   }
-}</component>
+}]]></component>
   <component name="RecentsManager">
     <key name="android.template.1078161031">
       <recent name="com.api.splashscreen" />
