@@ -3,7 +3,6 @@ plugins {
     alias(libs.plugins.jetbrainsKotlinAndroid)
     // Add the Google services Gradle plugin
     id("com.google.gms.google-services")
-
 }
 
 android {
@@ -52,10 +51,12 @@ dependencies {
     implementation(libs.material)
     implementation(libs.androidx.activity)
     implementation(libs.androidx.constraintlayout)
+    implementation("com.google.firebase:firebase-analytics")
     implementation(platform("com.google.firebase:firebase-bom:33.0.0"))
     implementation(libs.androidx.navigation.fragment.ktx)
     implementation(libs.androidx.navigation.ui.ktx)
     implementation(libs.firebase.auth.ktx)
+    implementation(libs.firebase.database.ktx)
 
     testImplementation(libs.junit)
     androidTestImplementation(libs.androidx.junit)

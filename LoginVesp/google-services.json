@@ -1,0 +1,30 @@
+{
+  "project_info": {
+    "project_number": "63923983927",
+    "firebase_url": "https://bamboo-archery-303112-default-rtdb.firebaseio.com",
+    "project_id": "bamboo-archery-303112",
+    "storage_bucket": "bamboo-archery-303112.appspot.com"
+  },
+  "client": [
+    {
+      "client_info": {
+        "mobilesdk_app_id": "1:63923983927:android:2af83014fe53f62ce311b2",
+        "android_client_info": {
+          "package_name": "br.slmm.com.loginvesp"
+        }
+      },
+      "oauth_client": [],
+      "api_key": [
+        {
+          "current_key": "AIzaSyBVX_ayLZBk174ebOpLtLVsKlR1R8P_4OQ"
+        }
+      ],
+      "services": {
+        "appinvite_service": {
+          "other_platform_oauth_client": []
+        }
+      }
+    }
+  ],
+  "configuration_version": "1"
+}
