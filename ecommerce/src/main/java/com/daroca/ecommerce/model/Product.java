@@ -11,8 +11,11 @@ public class Product {
     private Integer productId;
     @Column(length = 50, nullable = false)
     private String name;
-    @Column
+    @Column(nullable = false)
     private Double unitPrice;
+    @OneToMany
+    @JoinColumn(name = "product_category_id", foreignKey = @ForeignKey(name = "FK_Product_ProductCategory"))
+    private ProductCategory productCategory;
 
     public Integer getProductId() {
         return productId;
