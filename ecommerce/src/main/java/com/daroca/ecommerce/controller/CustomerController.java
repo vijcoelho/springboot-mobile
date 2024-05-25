@@ -9,7 +9,6 @@ import java.util.List;
 import java.util.Optional;
 
 @RestController
-@RequestMapping("/customers")
 public class CustomerController {
 
     @Autowired
@@ -36,16 +35,16 @@ public class CustomerController {
     }
 
     @PutMapping
-    public Customer update(@RequestBody Customer customer, @PathVariable Integer id) {
-        Optional<Customer> oldCustomer = repository.findById(id);
-        if (oldCustomer.isPresent()) {
-            Customer c = oldCustomer.get();
-            c.setName(customer.getName());
-            c.setEmail(customer.getEmail());
-            c.setLatitude(customer.getLatitude());
-            c.setLongitude(customer.getLongitude());
-            return repository.save(c);
-        }
-        return null;
+    public Customer update(@RequestBody Customer newCustomer, @PathVariable Integer id) {
+        return repository.findById(id)
+                .map(customer -> {
+                    customer.setName(newCustomer.getName());
+                    customer.setLongitude(newCustomer.getLongitude());
+                    customer.setLatitude(newCustomer.getLatitude());
+                    return repository.save(customer);
+                })
+                .orElseGet(() -> {
+                    return repository.save(newCustomer);
+                });
     }
 }
