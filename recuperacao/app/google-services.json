@@ -1,0 +1,48 @@
+{
+  "project_info": {
+    "project_number": "71681724297",
+    "project_id": "projetosergio-37674",
+    "storage_bucket": "projetosergio-37674.appspot.com"
+  },
+  "client": [
+    {
+      "client_info": {
+        "mobilesdk_app_id": "1:71681724297:android:b59e348f140d60fe7a1b58",
+        "android_client_info": {
+          "package_name": "com.api.ra23524"
+        }
+      },
+      "oauth_client": [],
+      "api_key": [
+        {
+          "current_key": "AIzaSyD_B88wRcHaHJE8tUifIZ-fgj0wYD-kA3o"
+        }
+      ],
+      "services": {
+        "appinvite_service": {
+          "other_platform_oauth_client": []
+        }
+      }
+    },
+    {
+      "client_info": {
+        "mobilesdk_app_id": "1:71681724297:android:e07a2c1e1d8401cf7a1b58",
+        "android_client_info": {
+          "package_name": "com.api.recuperacao"
+        }
+      },
+      "oauth_client": [],
+      "api_key": [
+        {
+          "current_key": "AIzaSyD_B88wRcHaHJE8tUifIZ-fgj0wYD-kA3o"
+        }
+      ],
+      "services": {
+        "appinvite_service": {
+          "other_platform_oauth_client": []
+        }
+      }
+    }
+  ],
+  "configuration_version": "1"
+}

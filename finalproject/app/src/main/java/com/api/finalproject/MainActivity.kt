@@ -39,7 +39,7 @@ class MainActivity : AppCompatActivity() {
                 .addOnCompleteListener(this) { task ->
                     if (task.isSuccessful) {
                         Toast.makeText(this, "Login realizado com sucesso", Toast.LENGTH_SHORT).show()
-                        startActivity(Intent(this@MainActivity, DisciplinasActivity::class.java))
+                        startActivity(Intent(this@MainActivity, GoogleMaps::class.java))
                         finish()
                     } else {
                         val exception = task.exception
