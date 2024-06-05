@@ -9,6 +9,7 @@ public class ProductCategory {
     @Id
     @GeneratedValue(strategy = GenerationType.IDENTITY)
     private Integer productId;
+
     @Column(length = 50, nullable = false)
     private String name;
 

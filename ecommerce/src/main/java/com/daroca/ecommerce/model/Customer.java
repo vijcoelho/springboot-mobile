@@ -9,14 +9,19 @@ public class Customer {
     @Id
     @GeneratedValue(strategy = GenerationType.IDENTITY)
     private Integer customerId;
+
     @Column(length = 50, nullable = false)
     private String name;
+
     @Column
     private Double latitude;
+
     @Column
     private Double longitude;
+
     @Column(length = 50)
     private String city;
+
     @Column(length = 50)
     private String state;
 
