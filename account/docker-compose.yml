@@ -1,0 +1,19 @@
+services:
+  account-database:
+    container_name: jupyter
+    image: mysql:latest
+    environment:
+      MYSQL_DATABASE: account
+      MY_USER: root
+      MYSQL_ROOT_PASSWORD: abc123
+    ports:
+      - 3306:3306
+    expose:
+      - 3306
+    networks:
+      - account-private-networks
+
+networks:
+  account-private-networks:
+    name: account-private-network
+    driver: bridge
