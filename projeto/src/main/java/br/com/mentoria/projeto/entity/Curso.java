@@ -1,26 +1,28 @@
-package br.com.mentoria.projeto.entities;
+package br.com.mentoria.projeto.entity;
 
 import jakarta.validation.constraints.NotBlank;
 import jakarta.validation.constraints.NotNull;
 import lombok.Builder;
 import lombok.Data;
 import org.springframework.data.annotation.Id;
+import org.springframework.data.mongodb.core.mapping.Document;
 
-import java.time.LocalDate;
+import java.math.BigDecimal;
 
+@Document
 @Builder
 @Data
 public class Curso {
     @Id
     private String id;
+    @NotNull
+    private String cpfMentor;
     @NotBlank
-    private String nomeCurso;
+    private String titulo;
     @NotBlank
     private String descricao;
-    private LocalDate dataCriacao;
     @NotNull
-    private Double preco;
+    private BigDecimal preco;
     @NotNull
-    private Integer quantidadeAlunos;
-
+    private Integer quantidadeAluno;
 }
