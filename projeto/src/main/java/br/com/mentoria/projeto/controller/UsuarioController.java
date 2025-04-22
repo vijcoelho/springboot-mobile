@@ -4,6 +4,7 @@ import br.com.mentoria.projeto.dto.request.AlterarSenhaUsuarioRequest;
 import br.com.mentoria.projeto.dto.request.CriarUsuarioRequest;
 import br.com.mentoria.projeto.dto.response.AlterarSenhaUsuarioResponse;
 import br.com.mentoria.projeto.entity.Usuario;
+import br.com.mentoria.projeto.ia.GeminiService;
 import br.com.mentoria.projeto.service.UsuarioService;
 import org.springframework.beans.factory.annotation.Autowired;
 import org.springframework.http.ResponseEntity;
@@ -36,5 +37,10 @@ public class UsuarioController {
     @GetMapping("/{id}")
     public Optional<Usuario> pegarPeloId(@PathVariable String id) {
         return usuarioService.pegarPeloId(id);
+    }
+
+    @GetMapping("/recomendacoes/{id}")
+    public ResponseEntity<?> recomendacoes(@PathVariable String id) {
+        return usuarioService.recomendacoes(id);
     }
 }
