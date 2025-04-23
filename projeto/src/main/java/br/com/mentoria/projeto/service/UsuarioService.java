@@ -1,19 +1,22 @@
 package br.com.mentoria.projeto.service;
 
-import br.com.mentoria.projeto.dto.request.AlterarSenhaUsuarioRequest;
-import br.com.mentoria.projeto.dto.request.CriarUsuarioRequest;
-import br.com.mentoria.projeto.dto.response.AlterarSenhaUsuarioResponse;
+import br.com.mentoria.projeto.config.JwtService;
+import br.com.mentoria.projeto.dto.request.usuario.AlterarSenhaUsuarioRequest;
+import br.com.mentoria.projeto.dto.request.usuario.ColocarSaldoUsuarioRequest;
+import br.com.mentoria.projeto.dto.request.usuario.CriarUsuarioRequest;
+import br.com.mentoria.projeto.dto.response.usuario.AlterarSenhaUsuarioResponse;
 import br.com.mentoria.projeto.entity.Usuario;
 import br.com.mentoria.projeto.ia.GeminiService;
 import br.com.mentoria.projeto.mapper.UsuarioMapper;
 import br.com.mentoria.projeto.repository.UsuarioRepository;
 import com.fasterxml.jackson.databind.JsonNode;
 import com.fasterxml.jackson.databind.ObjectMapper;
-import org.springframework.beans.factory.annotation.Autowired;
 import org.springframework.http.HttpStatus;
 import org.springframework.http.ResponseEntity;
+import org.springframework.security.core.parameters.P;
 import org.springframework.security.crypto.password.PasswordEncoder;
 import org.springframework.stereotype.Service;
+import org.springframework.web.server.ResponseStatusException;
 
 import java.util.HashMap;
 import java.util.List;
@@ -26,32 +29,34 @@ public class UsuarioService {
     private final UsuarioRepository usuarioRepository;
     private final GeminiService geminiService;
     private final PasswordEncoder passwordEncoder;
+    private final JwtService jwtService;
 
     public UsuarioService(
             UsuarioMapper usuarioMapper,
             UsuarioRepository usuarioRepository,
             GeminiService geminiService,
-            PasswordEncoder passwordEncoder
+            PasswordEncoder passwordEncoder,
+            JwtService jwtService
     ) {
         this.usuarioMapper = usuarioMapper;
         this.usuarioRepository = usuarioRepository;
         this.geminiService = geminiService;
         this.passwordEncoder = passwordEncoder;
+        this.jwtService = jwtService;
     }
 
-    public ResponseEntity<?> cadastro(CriarUsuarioRequest request) {
-        Usuario usuario = usuarioMapper.entidadeCadastro(request);
-        if (usuario != null) {
-            usuario.setSenha(passwordEncoder.encode(request.getSenha()));
-            usuarioRepository.save(usuario);
-            return ResponseEntity.status(200).body("Usuario salvo com sucesso");
-        }
-        return ResponseEntity.status(400).body("Nao foi possivel salver usuario");
-    }
-
-    public AlterarSenhaUsuarioResponse alterarSenha(AlterarSenhaUsuarioRequest request, String id) {
+    public AlterarSenhaUsuarioResponse alterarSenha(AlterarSenhaUsuarioRequest request, String id, String token) {
+        String jwtToken = token.replace("Bearer ", "");
+        String jwtEmail = jwtService.extractEmail(jwtToken);
         Usuario usuario = usuarioRepository.findById(id)
                 .orElseThrow(() -> new RuntimeException("Erro ao encontrar usuario"));
+
+        if (!jwtEmail.equals(usuario.getEmail())) {
+            return AlterarSenhaUsuarioResponse.builder()
+                    .id(usuario.getId())
+                    .mensagem("Seu token esta errado ou expirado!")
+                    .build();
+        }
 
         usuario.setSenha(passwordEncoder.encode(request.getNovaSenha()));
         usuarioRepository.save(usuario);
@@ -70,9 +75,15 @@ public class UsuarioService {
         return usuarioRepository.findById(id);
     }
 
-    public ResponseEntity<?> recomendacoes(String id) {
+    public ResponseEntity<?> recomendacoes(String id, String token) {
+        String jwtToken = token.replace("Bearer ", "");
+        String jwtEmail = jwtService.extractEmail(jwtToken);
         return usuarioRepository.findById(id)
                 .map(usuario -> {
+                    if (!jwtEmail.equals(usuario.getEmail())) {
+                        return ResponseEntity.status(404).body("Token invalido ou expirado!");
+                    }
+
                     String respostaBruta = geminiService.recomendarCursos(usuario.getSobreMim(), usuario.getPapel());
                     String jsonLimpo = extrairJsonLimpo(respostaBruta);
 
@@ -119,4 +130,48 @@ public class UsuarioService {
         return resposta;
     }
 
+    public ResponseEntity<?> colocarSaldo(ColocarSaldoUsuarioRequest request, String token) {
+        String jwtToken = token.replace("Bearer ", "");
+        String jwtEmail = jwtService.extractEmail(jwtToken);
+        Optional<Usuario> usuario = usuarioRepository.findById(request.getId());
+        if (!jwtEmail.equals(usuario.get().getEmail())) {
+            return ResponseEntity.status(404).body("Token invalido ou expirado!");
+        }
+        if (usuario.get().getStatus().equals(false)) {
+            return ResponseEntity.status(404).body("Sua conta esta desativada!");
+        }
+
+        usuario.get().setSaldo(usuario.get().getSaldo().add(request.getSaldo()));
+        usuarioRepository.save(usuario.get());
+
+        return ResponseEntity.status(200).body("Saldo colocado com sucesso!");
+    }
+
+    public ResponseEntity<?> desativarConta(String id, String token) {
+        String jwtToken = token.replace("Bearer ", "");
+        String jwtEmail = jwtService.extractEmail(jwtToken);
+        Usuario usuario = usuarioRepository.findById(id)
+                .orElseThrow(() -> new ResponseStatusException(HttpStatus.NOT_FOUND));
+        if (!jwtEmail.equals(usuario.getEmail())) {
+            return ResponseEntity.status(404).body("Token invalido ou expirado!");
+        }
+        usuario.setStatus(false);
+        usuarioRepository.save(usuario);
+
+        return ResponseEntity.status(200).body("Conta desativada com sucesso!");
+    }
+
+    public ResponseEntity<?> ativarConta(String id, String token) {
+        String jwtToken = token.replace("Bearer ", "");
+        String jwtEmail = jwtService.extractEmail(jwtToken);
+        Usuario usuario = usuarioRepository.findById(id)
+                .orElseThrow(() -> new ResponseStatusException(HttpStatus.NOT_FOUND));
+        if (!jwtEmail.equals(usuario.getEmail())) {
+            return ResponseEntity.status(404).body("Token invalido ou expirado!");
+        }
+        usuario.setStatus(true);
+        usuarioRepository.save(usuario);
+
+        return ResponseEntity.status(200).body("Conta ativada com sucesso!");
+    }
 }

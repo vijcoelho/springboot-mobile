@@ -1,6 +1,6 @@
 package br.com.mentoria.projeto.mapper;
 
-import br.com.mentoria.projeto.dto.request.CriarUsuarioRequest;
+import br.com.mentoria.projeto.dto.request.usuario.CriarUsuarioRequest;
 import br.com.mentoria.projeto.entity.Usuario;
 import org.mapstruct.Mapper;
 import org.mapstruct.Mapping;

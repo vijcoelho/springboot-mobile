@@ -1,4 +1,4 @@
-package br.com.mentoria.projeto.dto.response;
+package br.com.mentoria.projeto.dto.response.usuario;
 
 import lombok.Builder;
 import lombok.Data;

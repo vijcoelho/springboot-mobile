@@ -28,7 +28,7 @@ public class GeminiService {
         this.restTemplate = new RestTemplate();
     }
 
-    public String recomendarCursos(String sobreMim, Papel papel) {
+    public String recomendarCursos(String sobreMim, Papel[] papel) {
         List<Curso> cursos = cursoRepository.findAll();
         String cursosTexto = cursos.stream()
                 .map(c -> String.format("- Título: %s | Descrição: %s | Preço: R$ %.2f",

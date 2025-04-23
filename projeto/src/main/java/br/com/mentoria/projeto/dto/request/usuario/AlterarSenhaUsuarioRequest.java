@@ -1,4 +1,4 @@
-package br.com.mentoria.projeto.dto.request;
+package br.com.mentoria.projeto.dto.request.usuario;
 
 import lombok.Data;
 

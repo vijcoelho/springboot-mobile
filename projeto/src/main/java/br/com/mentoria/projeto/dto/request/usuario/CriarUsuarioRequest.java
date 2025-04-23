@@ -1,4 +1,4 @@
-package br.com.mentoria.projeto.dto.request;
+package br.com.mentoria.projeto.dto.request.usuario;
 
 import br.com.mentoria.projeto.entity.enums.Papel;
 import lombok.Data;
@@ -9,6 +9,6 @@ public class CriarUsuarioRequest {
     private String email;
     private String senha;
     private String cpf;
-    private Papel papel;
+    private Papel[] papel;
     private String sobreMim;
 }
