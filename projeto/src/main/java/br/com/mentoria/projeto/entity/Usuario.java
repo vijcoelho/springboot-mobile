@@ -8,6 +8,7 @@ import org.springframework.data.annotation.Id;
 import org.springframework.data.mongodb.core.index.Indexed;
 import org.springframework.data.mongodb.core.mapping.Document;
 
+import java.math.BigDecimal;
 import java.util.ArrayList;
 import java.util.List;
 
@@ -33,4 +34,8 @@ public class Usuario {
     private String sobreMim;
     @NotNull
     private Papel papel;
+    @Builder.Default
+    private BigDecimal saldo = BigDecimal.valueOf(0.0);
+    @Builder.Default
+    private Boolean status = true;
 }

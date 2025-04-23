@@ -42,7 +42,7 @@ public class GeminiService {
             Abaixo está uma lista de cursos disponíveis:
             %s
 
-            Com base nessa lista, recomende 3 cursos e para cada um, me retorne:
+            Com base nessa lista, recomende todos os cursos possiveis e para cada um, me retorne:
             - Título do curso
             - Descrição
             - Preço

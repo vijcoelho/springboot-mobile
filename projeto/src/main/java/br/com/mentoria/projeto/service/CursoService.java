@@ -16,13 +16,18 @@ import java.util.Optional;
 
 @Service
 public class CursoService {
-    @Autowired
-    private UsuarioRepository usuarioRepository;
-    @Autowired
-    private CursoRepository cursoRepository;
-    @Autowired
-    private CursoMapper cursoMapper;
-    private CriarCursoResponse response;
+    private final UsuarioRepository usuarioRepository;
+    private final CursoRepository cursoRepository;
+    private final CursoMapper cursoMapper;
+    public CursoService(
+            UsuarioRepository usuarioRepository,
+            CursoRepository cursoRepository,
+            CursoMapper cursoMapper
+    ) {
+        this.usuarioRepository = usuarioRepository;
+        this.cursoRepository = cursoRepository;
+        this.cursoMapper = cursoMapper;
+    }
 
     public CriarCursoResponse criarCurso(CriarCursoRequest request) {
         Optional<Usuario> usuarioOptional = usuarioRepository.findByCpf(request.getCpfMentor());

@@ -22,14 +22,22 @@ import java.util.Optional;
 
 @Service
 public class UsuarioService {
-    @Autowired
-    private UsuarioMapper usuarioMapper;
-    @Autowired
-    private UsuarioRepository usuarioRepository;
-    @Autowired
-    private GeminiService geminiService;
-    @Autowired
-    private PasswordEncoder passwordEncoder;
+    private final UsuarioMapper usuarioMapper;
+    private final UsuarioRepository usuarioRepository;
+    private final GeminiService geminiService;
+    private final PasswordEncoder passwordEncoder;
+
+    public UsuarioService(
+            UsuarioMapper usuarioMapper,
+            UsuarioRepository usuarioRepository,
+            GeminiService geminiService,
+            PasswordEncoder passwordEncoder
+    ) {
+        this.usuarioMapper = usuarioMapper;
+        this.usuarioRepository = usuarioRepository;
+        this.geminiService = geminiService;
+        this.passwordEncoder = passwordEncoder;
+    }
 
     public ResponseEntity<?> cadastro(CriarUsuarioRequest request) {
         Usuario usuario = usuarioMapper.entidadeCadastro(request);
