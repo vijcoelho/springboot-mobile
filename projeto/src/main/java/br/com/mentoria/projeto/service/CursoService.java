@@ -94,8 +94,16 @@ public class CursoService {
                 .orElseThrow(() -> new ResponseStatusException(HttpStatus.NOT_FOUND));
 
         mentorado.setSaldo(mentorado.getSaldo().subtract(curso.getPreco()));
+
         if (!mentorado.getCursos().contains(curso)) {
             mentorado.getCursos().add(curso);
+        }
+        if (mentorado.getSaldo().compareTo(curso.getPreco()) < 0) {
+            return ResponseEntity.status(400).body("Saldo insuficiente para realizar a compra do curso | " + request.getTitulo());
+        }
+
+        if (curso.getQuantidadeAluno() <= 0) {
+            return ResponseEntity.status(400).body("Quantidade de alunos indisponivel para o curso | " + request.getTitulo());
         }
 
         mentor.setSaldo(mentor.getSaldo().add(curso.getPreco()));
